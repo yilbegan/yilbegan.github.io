@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
 body {
     margin: 0;
+    background-image: url("assets/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+@font-face {
+    font-family: "Less Perfect DOS VGA";
+    src: url("./assets/LessPerfectDOSVGA.ttf");
+}
+
+@font-face {
+    font-family: "More Perfect DOS VGA";
+    src: url("./assets/MorePerfectDOSVGA.ttf");
+}
+
