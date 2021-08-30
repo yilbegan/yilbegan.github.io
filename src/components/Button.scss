@@ -1,0 +1,36 @@
+.Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 14px;
+  min-width: 14px;
+  padding: 2px;
+  border: 1px solid;
+  border-radius: 0;
+  transition: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  color: #000000;
+  outline-color: #000000;
+  border-top-color: #ffffff;
+  border-right-color: #000000;
+  border-left-color: #ffffff;
+  border-bottom-color: #000000;
+  background-color: #c0c0c0;
+  box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+}
+
+.Button:active,
+.Button:checked,
+.Button:disabled:active,
+.Button:disabled:checked {
+  border-top-color: #000000;
+  border-right-color: #ffffff;
+  border-left-color: #000000;
+  border-bottom-color: #ffffff;
+  box-shadow: inset 1px 1px #808080;
+}
+
+.Button:disabled > img {
+  opacity: 0.3;
+}

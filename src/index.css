@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 body {
     margin: 0;
@@ -9,11 +9,11 @@ body {
 
 @font-face {
     font-family: "Less Perfect DOS VGA";
-    src: url("./assets/LessPerfectDOSVGA.ttf");
+    src: url("assets/fonts/LessPerfectDOSVGA.ttf");
 }
 
 @font-face {
     font-family: "More Perfect DOS VGA";
-    src: url("./assets/MorePerfectDOSVGA.ttf");
+    src: url("assets/fonts/MorePerfectDOSVGA.ttf");
 }
 
