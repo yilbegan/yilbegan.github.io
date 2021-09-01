@@ -3,12 +3,13 @@ import "./Button.scss"
 
 class Button extends React.Component {
   render() {
-    const {text, icon, children, ...restProps} = this.props
+    const {text, icon, children, className, ...restProps} = this.props
+    const classNames = ["Button", className]
 
     return (
-      <button className="Button" {...restProps}>
+      <button className={classNames.join(" ")} {...restProps}>
         {icon && <img src={icon} alt="" style={{paddingRight: text !== undefined ? 4 : 0}}/>}
-        {text}
+        <div className="Button__label">{text}</div>
       </button>
     )
   }
