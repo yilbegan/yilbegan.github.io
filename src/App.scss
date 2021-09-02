@@ -1,7 +1,56 @@
 .App {
-  min-height: 100vh;
-  background-image: url("assets/img/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
+  flex-direction: column;
+
+  &__desktop {
+    min-height: calc(100vh - 35px);
+    background-image: url("./assets/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    background-color: #c0c0c0;
+  }
+
+  &__panel-button {
+    margin-left: 2px;
+    margin-right: 2px;
+    height: 30px;
+    justify-content: flex-start !important;
+    width: 160px;
+  }
+
+  &__panel-button > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__panel-separator {
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+    margin-left: 3px;
+    margin-right: 3px;
+    height: 26px;
+  }
+
+  &__panel-clock {
+    border: 2px solid #000000;
+    border-image: url("./assets/img/entry.png");
+    border-image-slice: 2 2 2 2;
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
 }

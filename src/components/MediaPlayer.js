@@ -53,9 +53,10 @@ class MediaPlayer extends React.Component {
 
   render() {
     const {isPlaying, time, canPlay} = this.state
+    const {closeWindow} = this.props
 
     return (
-      <Window title="Media Player" logo={MediaPlayerIcon}>
+      <Window title="Media Player" logo={MediaPlayerIcon} onClose={closeWindow}>
         <div className="MediaPlayer">
           <img src={MediaPlayerImage} alt="" className="MediaPlayer__image"/>
           <div className="MediaPlayer__bottom">

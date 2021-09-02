@@ -56,7 +56,7 @@ class Terminal extends React.Component {
         // TODO
         break
       case "WMPLAYER":
-        // TODO
+        this.props.openWindow("media_player")
         break
       case "CLS":
         terminal.clear()
@@ -83,8 +83,10 @@ class Terminal extends React.Component {
   }
 
   render() {
+    const {closeWindow} = this.props
+
     return (
-      <Window title="Terminal" logo={TerminalLogo}>
+      <Window title="Terminal" logo={TerminalLogo} onClose={closeWindow}>
         <div style={{padding: 2, backgroundColor: "black"}}>
           <XTerm
             ref={this.terminalRef}
