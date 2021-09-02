@@ -29,6 +29,18 @@ const helpText =
 <${colors.magenta}DIR      ${colors.reset}> Show my recent activity.\r
 <${colors.magenta}WMPLAYER ${colors.reset}> Open music player.\r
 <${colors.magenta}CLS      ${colors.reset}> Clear screen.\r\n`
+const whoAmI =
+`NAME\r
+    Evgeniy.\r
+\r
+SYNOPSIS\r
+    Fullstack developer from Russia.\r
+\r
+SUPPORTED FORMATS\r
+    *.py, *.js, *.html, *.css,\r
+    *.ts, *.scss, *.cpp, *.ino\r
+`
+
 
 class FixedXTerm extends XTerm {
   componentDidMount() {
@@ -59,7 +71,7 @@ class Terminal extends React.Component {
         terminal.write(helpText)
         break
       case "WHOAMI":
-        // TODO
+        terminal.write(whoAmI)
         break
       case "DIR":
         // TODO
