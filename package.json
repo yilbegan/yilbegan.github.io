@@ -12,7 +12,8 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
     "xterm": "^4.13.0",
-    "xterm-for-react": "^1.0.4"
+    "xterm-for-react": "^1.0.4",
+    "xterm-webfont": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

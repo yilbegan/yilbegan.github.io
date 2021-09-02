@@ -2,14 +2,15 @@ import React from "react";
 import {XTerm} from "xterm-for-react";
 import Window from "./Window";
 import TerminalLogo from "../assets/img/terminal_logo.png"
+import * as XtermWebfont from 'xterm-webfont'
 
 const styles = {
   terminal: {
     fontSize: 16,
-    fontFamily: "More Perfect DOS VGA, Less Perfect DOS VGA",
+    fontFamily: "More Perfect DOS VGA",
     letterSpacing: 0,
     cursorStyle: "underline",
-    cursorBlink: true
+    cursorBlink: true,
   }
 }
 
@@ -28,6 +29,14 @@ const helpText =
 <${colors.magenta}DIR      ${colors.reset}> Show my recent activity.\r
 <${colors.magenta}WMPLAYER ${colors.reset}> Open music player.\r
 <${colors.magenta}CLS      ${colors.reset}> Clear screen.\r\n`
+
+class FixedXTerm extends XTerm {
+  componentDidMount() {
+    if (this.terminalRef.current) {
+      this.terminal.loadWebfontAndOpen(this.terminalRef.current)
+    }
+  }
+}
 
 class Terminal extends React.Component {
   constructor(props) {
@@ -88,10 +97,11 @@ class Terminal extends React.Component {
     return (
       <Window title="Terminal" logo={TerminalLogo} onClose={closeWindow}>
         <div style={{padding: 2, backgroundColor: "black"}}>
-          <XTerm
+          <FixedXTerm
             ref={this.terminalRef}
             options={styles.terminal}
             onData={this.onData.bind(this)}
+            addons={[new XtermWebfont()]}
           />
         </div>
       </Window>
