@@ -2,7 +2,6 @@
   border: 10px solid #000;
   border-image: url("../assets/img/window_decoration.png");
   border-image-slice: 10 10 10 10;
-  box-shadow: none;
   height: 1%;
   display: flex;
 
@@ -67,11 +66,45 @@
   &__header-right {
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    justify-self: center;
     display: flex;
-    padding-top: 2px;
     margin-right: 1px;
     margin-left: 4px;
+  }
+
+  &__header-minimize {
+    border: 0;
+    height: 16px;
+    width: 16px;
+    margin-right: 2px;
+    background: transparent url("../assets/img/minimize_normal.png");
+  }
+
+  &__header-minimize:active {
+    background: transparent url("../assets/img/minimize_pressed.png");
+  }
+
+  &__header-maximize {
+    border: 0;
+    height: 16px;
+    width: 16px;
+    margin-right: 2px;
+    background: transparent url("../assets/img/maximize_normal.png");
+  }
+
+  &__header-maximize:active {
+    background: transparent url("../assets/img/maximize_pressed.png");
+  }
+
+  &__header-close {
+    border: 0;
+    height: 16px;
+    width: 16px;
+    margin-right: 2px;
+    background: transparent url("../assets/img/close_normal.png");
+  }
+
+  &__header-close:active {
+    background: transparent url("../assets/img/close_pressed.png");
   }
 
   &__container {

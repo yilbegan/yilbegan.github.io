@@ -2,15 +2,11 @@ import React from "react";
 import Draggable from 'react-draggable';
 import PropTypes from "prop-types";
 
-import MinimizeNormal from "../assets/img/minimize_normal.png"
-import MaximizeNormal from "../assets/img/maximize_normal.png"
-import CloseNormal from "../assets/img/close_normal.png"
-
 import "./Window.scss";
 
 class Window extends React.Component {
   render() {
-    const {title, logo, children, position} = this.props
+    const {title, logo, children, position, onClose, onMinimize, onMaximize} = this.props
 
     return (
       <Draggable defaultPosition={position} handle=".Window__header" bounds="parent">
@@ -22,9 +18,9 @@ class Window extends React.Component {
                 <div className="Window__title">{title}</div>
               </div>
               <div className="Window__header-right">
-                <img src={MinimizeNormal} alt=""/>
-                <img src={MaximizeNormal} alt=""/>
-                <img src={CloseNormal} alt=""/>
+                <button className="Window__header-minimize" onClick={onMinimize}/>
+                <button className="Window__header-maximize" onClick={onMaximize}/>
+                <button className="Window__header-close" onClick={onClose}/>
               </div>
             </div>
             <div className="Window__separator"/>
@@ -41,7 +37,10 @@ class Window extends React.Component {
 Window.propTypes = {
   logo: PropTypes.string,
   title: PropTypes.string,
-  position: PropTypes.object
+  position: PropTypes.object,
+  onClose: PropTypes.func,
+  onMinimize: PropTypes.func,
+  onMaximize: PropTypes.func
 }
 
 export default Window;
