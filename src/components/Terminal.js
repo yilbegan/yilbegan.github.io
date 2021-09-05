@@ -80,7 +80,7 @@ class Terminal extends React.Component {
 
         let eventName = {
           WatchEvent: "WCH",
-          PullEvent: "PSH",
+          PushEvent: "PSH",
           ForkEvent: "FRK",
           PullRequestEvent: "PR"
         }[event.type];
