@@ -1,7 +1,8 @@
-import React from "react";
-import {XTerm} from "xterm-for-react";
-import Window from "./Window";
+import React from "react"
+import {XTerm} from "xterm-for-react"
+import Window from "./Window"
 import TerminalLogo from "../assets/img/terminal_logo.png"
+import moment from "moment"
 import * as XtermWebfont from 'xterm-webfont'
 
 const styles = {
@@ -16,7 +17,8 @@ const styles = {
 
 const colors = {
   magenta: "\x1b[95m",
-  reset: "\x1b[39m"
+  red: "\x1b[31m",
+  reset: "\x1b[39m",
 }
 
 const greetings = "Microsoft(R) Windows 95\r\n"
@@ -54,7 +56,7 @@ class Terminal extends React.Component {
   constructor(props) {
     super(props);
 
-    this.terminalRef = React.createRef();
+    this.terminalRef = React.createRef()
     this.state = {input: ""}
   }
 
@@ -64,7 +66,47 @@ class Terminal extends React.Component {
     terminal.write(prompt)
   }
 
-  processCommand(input) {
+  async dirCommand() {
+    const terminal = this.terminalRef.current.terminal
+    let response = await fetch("https://api.github.com/users/yilbegan/events")
+    if (response.ok) {
+      let result = []
+      let json = await response.json()
+      for (let event of json) {
+        let date = moment(event.created_at)
+        if (date.isoWeek() !== moment().isoWeek()) {
+          continue
+        }
+
+        let eventName = {
+          WatchEvent: "WCH",
+          PullEvent: "PSH",
+          ForkEvent: "FRK",
+          PullRequestEvent: "PR"
+        }[event.type];
+        if (eventName !== undefined) {
+          result.push({
+            repo: event.repo.name,
+            event: eventName,
+            date: date.format("DD-MM-YYYY HH:mm")
+          })
+        }
+      }
+
+      let maxLen = result.reduce((p, c) => Math.max(p, c.repo.length), 0) + 2
+      for (let event of result) {
+        terminal.write(event.repo.padEnd(maxLen, " "))
+        terminal.write(event.event.padEnd(10, " "))
+        terminal.write(event.date)
+        terminal.write("\r\n")
+      }
+      terminal.writeln(`    ${result.length} Event(s)`)
+    } else {
+      terminal.writeln(`${colors.red}Network error: ${response.statusText}${colors.reset}`)
+    }
+  }
+
+  async processCommand(input) {
     const terminal = this.terminalRef.current.terminal
     switch (input.toUpperCase()) {
       case "HELP":
@@ -74,7 +116,7 @@ class Terminal extends React.Component {
         terminal.write(whoAmI)
         break
       case "DIR":
-        // TODO
+        await this.dirCommand()
         break
       case "WMPLAYER":
         this.props.openWindow("media_player")
@@ -95,7 +137,7 @@ class Terminal extends React.Component {
     if (code === 13 && this.state.input.length > 0) {
       terminal.write("\r\n")
       this.processCommand(input)
-      this.terminalRef.current.terminal.write(prompt)
+        .then(() => this.terminalRef.current.terminal.write(prompt))
     } else if (32 < code < 127) {
       input += data
       terminal.write(data)
