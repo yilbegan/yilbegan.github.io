@@ -30,6 +30,7 @@ const helpText =
 <${colors.magenta}WHOAMI   ${colors.reset}> Show information about me.\r
 <${colors.magenta}DIR      ${colors.reset}> Show my recent activity.\r
 <${colors.magenta}WMPLAYER ${colors.reset}> Open music player.\r
+<${colors.magenta}SQUISHY  ${colors.reset}> Play with squishy rat.\r
 <${colors.magenta}CLS      ${colors.reset}> Clear screen.\r\n`
 const whoAmI =
 `NAME\r
@@ -123,6 +124,9 @@ class Terminal extends React.Component {
         break
       case "CLS":
         terminal.clear()
+        break
+      case "SQUISHY":
+        window.location.replace("/other/squishy-rat/index.html")
         break
       default:
         terminal.write(`Illegal command: ${input}.\r\n`)
