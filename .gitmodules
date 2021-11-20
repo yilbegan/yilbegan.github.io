@@ -1,0 +1,3 @@
+[submodule "public/other/squishy-rat"]
+	path = public/other/squishy-rat
+	url = https://github.com/yilbegan/squishy-rat.git
